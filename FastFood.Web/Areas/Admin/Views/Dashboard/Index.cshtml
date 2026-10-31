@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-center fw-bold text-danger mb-5">
+        📊 Admin Dashboard
+    </h2>
+
+    <div class="row g-4">
+
+        <!-- Total Orders -->
+        <div class="col-md-3">
+            <div class="card dashboard-card bg-primary text-white border-0 shadow">
+                <div class="card-body text-center">
+
+                    <i class="fa-solid fa-cart-shopping fa-3x mb-3 dashboard-icon"></i>
+
+                    <h5>Total Orders</h5>
+
+                    <h1>@ViewBag.TotalOrders</h1>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Items -->
+        <div class="col-md-3">
+            <div class="card dashboard-card bg-success text-white border-0 shadow">
+                <div class="card-body text-center">
+
+                    <i class="fa-solid fa-burger fa-3x mb-3 dashboard-icon"></i>
+
+                    <h5>Total Items</h5>
+
+                    <h1>@ViewBag.TotalItems</h1>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Categories -->
+        <div class="col-md-3">
+            <div class="card dashboard-card bg-warning text-dark border-0 shadow">
+                <div class="card-body text-center">
+
+                    <i class="fa-solid fa-layer-group fa-3x mb-3 dashboard-icon"></i>
+
+                    <h5>Total Categories</h5>
+
+                    <h1>@ViewBag.TotalCategories</h1>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Sales -->
+        <div class="col-md-3">
+            <div class="card dashboard-card bg-danger text-white border-0 shadow">
+                <div class="card-body text-center">
+
+                    <i class="fa-solid fa-indian-rupee-sign fa-3x mb-3 dashboard-icon"></i>
+
+                    <h5>Total Sales</h5>
+
+                    <h1>₹ @ViewBag.TotalSales</h1>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="row mt-5">
+
+    <div class="col-lg-5">
+
+        <div class="card shadow border-0 rounded-4">
+
+            <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+
+                <h5 class="mb-0">
+                    🔔 New Order Notifications
+                </h5>
+
+                <span class="badge bg-warning text-dark fs-6">
+
+                    @ViewBag.NewOrderCount
+
+                </span>
+
+            </div>
+
+            <div class="card-body p-0">
+
+                @if (ViewBag.NewOrderCount == 0)
+                {
+                    <div class="text-center p-4">
+
+                        <h5 class="text-muted">
+
+                            No New Orders
+
+                        </h5>
+
+                    </div>
+                }
+                else
+                {
+                    <ul class="list-group list-group-flush">
+
+                        @foreach (var item in ViewBag.NewOrders)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                <div>
+
+                                    <strong>
+
+                                        #@item.Id
+
+                                    </strong>
+
+                                    <br />
+
+                                    @item.Name
+
+                                    <br />
+
+                                    <small class="text-muted">
+
+                                        ₹ @item.OrderTotal
+
+                                    </small>
+
+                                </div>
+
+                                <a asp-area="Admin"
+                                   asp-controller="Orders"
+                                   asp-action="Details"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-sm btn-danger">
+
+                                    View
+
+                                </a>
+
+                            </li>
+                        }
+
+                    </ul>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-lg-7">
+
+        <div class="card shadow border-0 rounded-4">
+
+            <div class="card-header  text-white" style="background:teal;">
+
+                <h5 class="mb-0">
+
+                    📦 Recent Orders
+
+                </h5>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Id</th>
+
+                            <th>Name</th>
+
+                            <th>Total</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in ViewBag.RecentOrders)
+                        {
+                            <tr>
+
+                                <td>#@item.Id</td>
+
+                                <td>@item.Name</td>
+
+                                <td>
+
+                                    ₹ @item.OrderTotal
+
+                                </td>
+
+                                <td>
+
+                                    @if (item.OrderStatus == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">
+
+                                            Pending
+
+                                        </span>
+                                    }
+                                    else if (item.OrderStatus == "Preparing")
+                                    {
+                                        <span class="badge bg-primary">
+
+                                            Preparing
+
+                                        </span>
+                                    }
+                                    else if (item.OrderStatus == "Out For Delivery")
+                                    {
+                                        <span class="badge bg-info">
+
+                                            Out For Delivery
+
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">
+
+                                            Delivered
+
+                                        </span>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

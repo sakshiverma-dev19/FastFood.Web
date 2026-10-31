@@ -1,0 +1,111 @@
+﻿@model FastFood.Models.Category
+
+<style>
+    .edit-card {
+        max-width: 420px;
+        margin: auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        border: none;
+        background: #fff;
+    }
+
+    .edit-header {
+        background: linear-gradient(135deg, #ffc107, #ff9800);
+        color: white;
+        text-align: center;
+        padding: 14px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #444;
+    }
+
+    .form-control:focus {
+        border-color: #ff9800;
+        box-shadow: 0 0 0 0.15rem rgba(255,152,0,0.25);
+    }
+
+    .btn-update {
+        background: linear-gradient(135deg, #ffc107, #ff9800);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .btn-update:hover {
+            transform: scale(1.03);
+            opacity: 0.95;
+        }
+
+    .btn-back {
+        border-radius: 30px;
+        font-size: 13px;
+    }
+
+    .form-control-sm {
+        font-size: 13px;
+    }
+</style>
+
+<div class="container mt-5">
+
+    <div class="card edit-card">
+
+        <!-- HEADER -->
+        <div class="edit-header">
+            Edit Category
+        </div>
+
+        <div class="p-4">
+
+            <form asp-area="Admin"
+                  asp-controller="Categories"
+                  asp-action="Edit"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <input asp-for="Id" type="hidden" />
+
+                <div class="mb-3">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control form-control-sm" placeholder="Enter category name" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+
+                    <button type="submit" class="btn-update">
+                        Update
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary btn-back">
+                        Back
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

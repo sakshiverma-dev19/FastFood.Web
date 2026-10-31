@@ -1,0 +1,37 @@
+﻿@model IEnumerable<FastFood.Models.OrderHeader>
+
+<h2>All Orders</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Order Id</th>
+        <th>Name</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.OrderTotal</td>
+            <td>@item.OrderStatus</td>
+
+            <td>
+                <a asp-action="Preparing"
+                   asp-route-id="@item.Id"
+                   class="btn btn-warning">
+                    Preparing
+                </a>
+
+                <a asp-action="Completed"
+                   asp-route-id="@item.Id"
+                   class="btn btn-success">
+                    Completed
+                </a>
+            </td>
+        </tr>
+    }
+</table>

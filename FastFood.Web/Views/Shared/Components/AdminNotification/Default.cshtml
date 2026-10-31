@@ -1,0 +1,9 @@
+﻿@model List<FastFood.Models.OrderHeader>
+<li class="nav-item dropdown">
+    <a class="nav-link position-relative" href="#" data-bs-toggle="dropdown">
+        <i class="fa-solid fa-bell fa-xl text-danger"></i> @if ((ViewBag.Count ?? 0) > 0)
+        { <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            @ViewBag.Count </span> } </a> <ul class="dropdown-menu dropdown-menu-end shadow" style="width:340px;">
+                <li class="dropdown-header fw-bold"> 🔔 New Orders </li> 
+                <li><hr class="dropdown-divider" /></li>
+                @if (Model == null || !Model.Any()) { <li class="text-center p-3"> No New Orders </li> } else { @foreach (var item in Model) { <li> <a class="dropdown-item" asp-area="Admin" asp-controller="Orders" asp-action="Details" asp-route-id="@item.Id"> <strong>Order #@item.Id</strong> <br /> @item.Name <br /> <span class="text-success"> ₹ @item.OrderTotal </span> </a> </li> <li><hr class="dropdown-divider"></li> } } <li> <a asp-area="Admin" asp-controller="Orders" asp-action="Index" class="dropdown-item text-center fw-bold text-danger"> View All Orders → </a> </li> </ul> </li>

@@ -1,0 +1,72 @@
+﻿@model FastFood.Web.ViewModels.LoginViewModel
+
+<div class="container pt-5">
+
+    <div class="row mt-5">
+
+        <div class="col-md-10 mx-auto shadow-lg border rounded p-5 position-relative bg-white">
+
+            <span class="login-icon border border-danger text-danger position-absolute start-50 top-0 translate-middle">
+                🔒
+            </span>
+
+            <div class="row">
+
+                <div class="col-md-6 text-center">
+
+                    <h2 class="text-danger fw-bold">
+                        Welcome Back
+                    </h2>
+
+                    <p class="mt-3">
+                        Login to access your Fast Food account and place orders easily.
+                    </p>
+
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="btn btn-outline-danger">
+                        New User? Register Here
+                    </a>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <form asp-action="Login" asp-controller="Account" method="post">
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <input asp-for="Email"
+                               class="form-control custom-input"
+                               placeholder="Enter Email" />
+
+                        <span asp-validation-for="Email"
+                              class="text-danger">
+                        </span>
+
+                        <input asp-for="Password"
+                               type="password"
+                               class="form-control custom-input"
+                               placeholder="Enter Password" />
+
+                        <span asp-validation-for="Password"
+                              class="text-danger">
+                        </span>
+
+                        <button type="submit"
+                                class="btn btn-danger w-100 custom-btn">
+                            Login
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

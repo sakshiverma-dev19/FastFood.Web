@@ -1,0 +1,321 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FastFood.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Fast Food</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FastFood.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+
+<body style="background:#f5f7fb;">
+    <div id="pageSpinner">
+
+        <div class="spinner-box">
+
+            <div class="spinner-ring"></div>
+
+            <h5>Loading...</h5>
+
+            <p>Please Wait</p>
+
+        </div>
+
+    </div>
+    <nav class="navbar navbar-expand-lg admin-navbar shadow-sm py-3">
+
+        <div class="container" style="max-width:1350px;">
+
+            <!-- Logo -->
+            <a class="navbar-brand admin-brand"
+               asp-controller="Home"
+               asp-action="Index">
+
+                <div class="admin-logo">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <div class="admin-text">
+                    <h4>Fast Food</h4>
+                    <small>Fresh & Delicious</small>
+                </div>
+
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link home-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link home-link" asp-controller="Home" asp-action="About">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link home-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                    </li>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link home-link" asp-controller="Home" asp-action="Cart">Cart</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link home-link" asp-controller="Account" asp-action="Profile">My Profile</a>
+                        </li>
+                    }
+
+                </ul>
+
+                <!-- Right Menu -->
+
+                <ul class ="d-flex align-items-center gap-3">
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUser = await UserManager.GetUserAsync(User);
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle fw-bold"
+                               href="#"
+                               data-bs-toggle="dropdown">
+
+                                <i class="fa-solid fa-user-circle me-1"></i>
+
+                                @(currentUser?.Name)
+
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-controller="Account"
+                                       asp-action="Profile">
+                                        My Profile
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"
+                                       asp-controller="Home"
+                                       asp-action="Orders">
+                                        My Orders
+                                    </a>
+                                </li>
+
+                                <li><hr class="dropdown-divider" /></li>
+
+                                <li>
+                                    <a class="dropdown-item text-danger"
+                                       asp-controller="Account"
+                                       asp-action="Logout">
+                                        Logout
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item me-2">
+
+                            <a class="btn btn-success rounded-pill px-4 py-2"
+                               asp-controller="Account"
+                               asp-action="Login">
+
+                                <i class="fa-solid fa-right-to-bracket me-1"></i>
+                                Login
+
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="btn btn-danger rounded-pill px-4 py-2"
+                               asp-controller="Account"
+                               asp-action="Register">
+
+                                <i class="fa-solid fa-user-plus me-1"></i>
+                                Register
+
+                            </a>
+
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+    <div class="container mt-4">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-section mt-5">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Logo -->
+                <div class="col-md-4 mb-3">
+
+                    <h4 class="footer-logo">
+                        🍔 Fast Food
+                    </h4>
+
+                    <p class="footer-text">
+                        Delicious food delivered fresh at your doorstep.
+                        Fast, tasty and affordable meals every day.
+                    </p>
+
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-3">
+
+                    <h5>Quick Links</h5>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="About">
+                                About Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Home"
+                               asp-action="Contact">
+                                Contact Us
+                            </a>
+                        </li>
+                        <a asp-controller="Home"
+                           asp-action="Cart">
+                            Cart
+                        </a>
+
+                    </ul>
+
+                </div>
+
+                <!-- Contact -->
+                <div class="col-md-4 mb-3">
+
+                    <h5>Contact</h5>
+
+                    <p>📍 Ayodhya, Uttar Pradesh</p>
+
+                    <p>📞 +91 9876543210</p>
+
+                    <p>✉ fastfood@gmail.com</p>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="text-center">
+
+                © 2026 Fast Food Ordering System | All Rights Reserved
+
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+
+        document.querySelectorAll("a").forEach(function(link){
+
+            link.addEventListener("click",function(){
+
+                var href=this.getAttribute("href");
+
+                if(!href ||
+                   href.startsWith("#") ||
+                   href.startsWith("javascript:") ||
+                   this.target=="_blank")
+                    return;
+
+                var spinner=document.getElementById("pageSpinner");
+
+                if(spinner){
+                    spinner.style.display="flex";
+                }
+
+            });
+
+        });
+
+        window.addEventListener("pageshow",function(){
+
+            var spinner=document.getElementById("pageSpinner");
+
+            if(spinner){
+                spinner.style.display="none";
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

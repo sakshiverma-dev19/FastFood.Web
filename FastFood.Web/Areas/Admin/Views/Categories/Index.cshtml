@@ -1,0 +1,138 @@
+﻿@model IEnumerable<FastFood.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<style>
+    .page-card {
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    .header-bar {
+        background: linear-gradient(135deg, teal, #ff1a75);
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .header-bar h3 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+    .btn-create {
+        background: white;
+        color: teal;
+        font-weight: 600;
+        border-radius: 30px;
+        padding: 6px 14px;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-create:hover {
+            background: #e6fffa;
+            transform: scale(1.05);
+        }
+
+    .table thead {
+        background: #f1fdfb;
+    }
+
+    .table tbody tr:hover {
+        background: #f8fffe;
+    }
+
+    .btn-sm-custom {
+        border-radius: 20px;
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: black;
+    }
+
+    .btn-delete {
+        background: #ff4d4d;
+        color: white;
+    }
+
+    .alert-custom {
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container mt-4">
+
+    <div class="page-card">
+
+        <!-- HEADER -->
+        <div class="header-bar">
+            <h3>📂 Category List</h3>
+
+            <a asp-action="Create" class="btn-create">
+                + Create New
+            </a>
+        </div>
+
+        <div class="p-3">
+
+            @if (TempData["success"] != null)
+            {
+                <div class="alert alert-success alert-custom">
+                    @TempData["success"]
+                </div>
+            }
+
+            <div class="table-responsive">
+                <table class="table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td class="fw-semibold">@item.Title</td>
+
+                                <td class="text-center">
+
+                                 <a href="/Admin/Categories/Edit/@item.Id"
+   class="btn btn-warning">
+    Edit
+</a>
+
+                                    <a href="/Admin/Categories/Delete/@item.Id"
+                                       class="btn btn-danger">
+                                        Delete
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,91 @@
+﻿@model FastFood.Web.ViewModels.SubCategoryViewModel
+
+<style>
+    .form-card {
+        max-width: 430px;
+        margin: auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        border: none;
+        background: #fff;
+    }
+
+    .form-header {
+        background: linear-gradient(135deg, teal, #20c997);
+        color: white;
+        text-align: center;
+        padding: 14px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 13px;
+        color: #444;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: teal;
+        box-shadow: 0 0 0 0.15rem rgba(0,128,128,0.25);
+    }
+
+    .btn-save {
+        background: linear-gradient(135deg, teal, #20c997);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+        .btn-save:hover {
+            transform: scale(1.03);
+            opacity: 0.95;
+        }
+</style>
+
+<div class="container mt-5">
+
+    <div class="card form-card">
+
+        <!-- HEADER -->
+        <div class="form-header">
+            Create Sub Category
+        </div>
+
+        <div class="p-4">
+
+            <form method="post">
+
+                <div class="mb-3">
+                    <label>Sub Category Name</label>
+                    <input asp-for="Title" class="form-control form-control-sm" placeholder="Enter sub category name" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label>Category</label>
+                    <select asp-for="CategoryId"
+                            asp-items="ViewBag.CategoryList"
+                            class="form-select form-select-sm">
+                        <option value="">Select Category</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-save mt-2">
+                    Save
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,148 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.26" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.26" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.26">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+  </ItemGroup>
+
+<ItemGroup>
+  <ProjectReference Include="..\FastFood.Models\FastFood.Models.csproj" />
+  <ProjectReference Include="..\FastFood.Repository\FastFood.Repository.csproj" />
+  <ProjectReference Include="..\FastFood.Services\FastFood.Services.csproj" />
+</ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Customer\Controllers\" />
+    <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Areas\Customer\Views\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="wwwroot\ProfileImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\images\about\about.jpg" />
+    <None Include="wwwroot\images\items\023e4efb-6507-4a8a-9ccd-583d5a5fe9d0.jpg" />
+    <None Include="wwwroot\images\items\0b641c06-06c5-4d45-9b2c-05f10d6ef971.webp" />
+    <None Include="wwwroot\images\items\0d4cde98-7232-47c8-b991-fa092a4925e8.jpg" />
+    <None Include="wwwroot\images\items\0de10d99-8fa4-40b9-ab76-a2fbc0187848.webp" />
+    <None Include="wwwroot\images\items\0e85ca34-47f1-4ba3-9c07-1bc10e444330.webp" />
+    <None Include="wwwroot\images\items\15c13f15-39c9-4eca-88c2-76982b7d7b36.jpg" />
+    <None Include="wwwroot\images\items\16286fe5-cb5c-48be-83b0-b38e2848200a.webp" />
+    <None Include="wwwroot\images\items\1ba41562-5583-4679-8853-b4a07183de85.webp" />
+    <None Include="wwwroot\images\items\1d41487d-9c91-4086-92f9-8d679c6faa27.webp" />
+    <None Include="wwwroot\images\items\2916f065-591f-4a02-b4ac-5b9a8e1ece2d.webp" />
+    <None Include="wwwroot\images\items\2e85b1c2-f02b-498b-b3eb-f20960ae0812.webp" />
+    <None Include="wwwroot\images\items\2ed87b56-4371-4ebf-8e8c-aa7ef9ea0961.webp" />
+    <None Include="wwwroot\images\items\304eb90d-72e8-419b-ba52-7908b496ee00.jpg" />
+    <None Include="wwwroot\images\items\312c4ab3-7dcb-4b44-908e-0bade032e0b4.webp" />
+    <None Include="wwwroot\images\items\3d47562b-1c96-4cd3-a00a-09428baf319d.webp" />
+    <None Include="wwwroot\images\items\4d5a4eb5-cd4c-464a-88ed-32f108e0446b.webp" />
+    <None Include="wwwroot\images\items\50b2cd5b-2aa2-4d85-8a08-54bfcbfe4d59.webp" />
+    <None Include="wwwroot\images\items\5ddc32d4-804a-4c3b-a80b-0fbd18f5c11c.webp" />
+    <None Include="wwwroot\images\items\69abf8c2-798d-4414-b30c-b517893ef0d6.jpg" />
+    <None Include="wwwroot\images\items\6f614f61-a593-4a49-83f4-315609c56b0e.avif" />
+    <None Include="wwwroot\images\items\736c89e1-e81e-4474-8d74-afa705c60e1c.webp" />
+    <None Include="wwwroot\images\items\745620a3-25c3-4b83-ab86-96d4d2430e3a.jpg" />
+    <None Include="wwwroot\images\items\7dfa1733-1c52-4e01-a566-d996d1b8449b.webp" />
+    <None Include="wwwroot\images\items\8924a3c4-e0ac-41ef-846f-9fb8d7a594bd.jpg" />
+    <None Include="wwwroot\images\items\8ef538d6-9682-42ef-b650-79ae2664e685.jpg" />
+    <None Include="wwwroot\images\items\8f092820-58e3-4f59-beb4-c2446d9eea7a.jpg" />
+    <None Include="wwwroot\images\items\95c1e308-e00c-4a5d-a0b2-d81e7bff4132.webp" />
+    <None Include="wwwroot\images\items\9c87602d-f6b8-49c9-bbab-81ca32132f0b.webp" />
+    <None Include="wwwroot\images\items\a8f56c1d-77a2-4793-b399-ca1d1655489a.jpg" />
+    <None Include="wwwroot\images\items\be8947a1-d71a-49ce-a7d8-698922c479c1.webp" />
+    <None Include="wwwroot\images\items\c41a2e6b-9833-471e-8fa2-23308eae81ea.webp" />
+    <None Include="wwwroot\images\items\c6cb36fa-04f9-4a65-92f0-b1da3b772e5c.JPG" />
+    <None Include="wwwroot\images\items\c90cbaff-4d3d-4c60-9041-3014c8dab0fb.jpg" />
+    <None Include="wwwroot\images\items\cf57774b-f82a-44e2-b6ce-c17740d3d2ac.webp" />
+    <None Include="wwwroot\images\items\d264de01-bcf9-4d23-a3d6-2c2b48af288d.jpg" />
+    <None Include="wwwroot\images\items\d2a30362-b2d6-4d03-a3a7-e56ea7045938.png" />
+    <None Include="wwwroot\images\items\d61c91a9-6f87-4cb3-a139-67ef6bdbc40b.jpg" />
+    <None Include="wwwroot\images\items\d9ec7b11-082a-495b-9ea6-2bc36f1c2650.jpg" />
+    <None Include="wwwroot\images\items\e0f6f53a-da87-4886-801a-61e15e99d7f9.webp" />
+    <None Include="wwwroot\images\items\e7eb2dbb-6600-4a6f-942a-198bf66a199c.jpg" />
+    <None Include="wwwroot\images\items\e8459cc1-f623-406a-9c90-6ef3b3cf8aa1.png" />
+    <None Include="wwwroot\images\items\eb560771-9a80-4ad3-abac-8522850b6db4.jpg" />
+    <None Include="wwwroot\images\items\eb7e51fd-7152-42fe-be46-b25db6de23fa.webp" />
+    <None Include="wwwroot\images\items\f0ce8eb4-9a53-4fff-a6ae-600094ee74bf.jpg" />
+    <None Include="wwwroot\images\items\fbb360fa-2e11-45a4-a2c5-24cf1c2a5aab.jpg" />
+    <None Include="wwwroot\images\items\fe6204ef-e31c-4fb7-a9f4-e6e4cfdf9899.jpg" />
+    <None Include="wwwroot\images\items\ff957fde-2936-404e-b1fe-d32c51149358.jpg" />
+    <None Include="wwwroot\images\Slider\Slider1.jpg" />
+    <None Include="wwwroot\images\Slider\Slider2.jpg" />
+    <None Include="wwwroot\images\Slider\Slider3.jpg" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\jquery\LICENSE.txt" />
+  </ItemGroup>
+
+</Project>

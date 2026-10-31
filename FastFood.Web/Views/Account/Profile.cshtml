@@ -1,0 +1,296 @@
+﻿@model FastFood.Web.ViewModels.ProfileViewModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+<style>
+body{
+    background:#f5f7fb;
+}
+
+.profile-card{
+    border:none;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+    .profile-header {
+        background: linear-gradient(135deg,#ffffff,#fff7f7);
+        text-align: center;
+        padding: 35px 20px 25px;
+        border-bottom: 1px solid #eee;
+        height: auto;
+        position: relative;
+    }
+
+    .profile-avatar {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        margin: auto;
+        transform: none;
+        left: auto;
+        bottom: auto;
+    }
+
+.profile-img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid white;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.camera-btn{
+    position:absolute;
+    right:0;
+    bottom:5px;
+    width:40px;
+    height:40px;
+    background:#dc3545;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.camera-btn:hover{
+    transform:scale(1.1);
+}
+
+.profile-body{
+    padding:90px 40px 40px;
+}
+
+.profile-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.profile-title h3{
+    font-weight:700;
+}
+
+.profile-title p{
+    color:#777;
+}
+
+.form-label{
+    font-weight:600;
+}
+
+.profile-input{
+    height:52px;
+    border-radius:14px;
+    border:2px solid #ececec;
+}
+
+.profile-input:focus{
+    border-color:#ff4b2b;
+    box-shadow:0 0 12px rgba(255,75,43,.2);
+}
+
+textarea.profile-input{
+    height:120px;
+}
+
+.profile-btn{
+    width:220px;
+    height:55px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.profile-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(255,75,43,.35);
+}
+
+</style>
+
+<div class="container mt-5 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card profile-card border-0">
+
+                <!-- Header -->
+                <div class="profile-header">
+
+                    <div class="profile-avatar">
+
+                        @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                        {
+                            <img id="preview"
+                                 src="~/ProfileImages/@Model.ProfileImage"
+                                 class="profile-img" />
+                        }
+                        else
+                        {
+                            <img id="preview"
+                                 src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                 class="profile-img" />
+                        }
+
+                        <label for="imageUpload" class="camera-btn">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+
+                    </div>
+
+                    <input asp-for="ImageFile"
+                           type="file"
+                           id="imageUpload"
+                           hidden
+                           onchange="previewImage(event)" />
+
+                    <h3 class="mt-4 fw-bold">@Model.Name</h3>
+
+                    <p class="text-muted mb-0">
+                        <i class="fa-solid fa-envelope"></i>
+                        @Model.Email
+                    </p>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5">
+
+                    <form method="post" enctype="multipart/form-data">
+
+                        <h4 class="mb-4 fw-bold">
+                            <i class="fa-solid fa-user me-2 text-danger"></i>
+                            Personal Information
+                        </h4>
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input asp-for="Name"
+                                       class="form-control profile-input" />
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Mobile Number
+                                </label>
+
+                                <input asp-for="PhoneNumber"
+                                       class="form-control profile-input" />
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input asp-for="Email"
+                                       readonly
+                                       class="form-control profile-input" />
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    City
+                                </label>
+
+                                <input asp-for="City"
+                                       class="form-control profile-input" />
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label class="form-label">
+                                    Postal Code
+                                </label>
+
+                                <input asp-for="PostalCode"
+                                       class="form-control profile-input" />
+
+                            </div>
+
+                            <div class="col-12">
+
+                                <label class="form-label">
+                                    Address
+                                </label>
+
+                                <textarea asp-for="Address"
+                                          class="form-control profile-input"></textarea>
+
+                            </div>
+
+                        </div>
+
+                        <hr class="my-5" />
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <span class="text-muted">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                Keep your profile updated.
+                            </span>
+
+                            <button type="submit" class="profile-btn">
+
+                                <i class="fa-solid fa-floppy-disk me-2"></i>
+
+                                Save Changes
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+    function previewImage(event){
+
+        const reader = new FileReader();
+
+        reader.onload = function(){
+
+            document.getElementById("preview").src = reader.result;
+
+        }
+
+        reader.readAsDataURL(event.target.files[0]);
+
+    }
+
+</script>

@@ -1,0 +1,150 @@
+﻿@model IEnumerable<FastFood.Models.OrderHeader>
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-danger text-white py-3">
+            <h3 class="mb-0">
+                📦 Orders Management
+            </h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle text-center">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Customer</th>
+                            <th>Phone</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th width="270">Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <strong>#@item.Id</strong>
+                                </td>
+
+                                <td>@item.Name</td>
+
+                                <td>@item.Phone</td>
+
+                                <td class="fw-bold text-success">
+                                    ₹ @item.OrderTotal
+                                </td>
+
+                                <td>
+
+                                    @if (item.OrderStatus == "Pending")
+                                    {
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                    }
+                                    else if (item.OrderStatus == "Preparing")
+                                    {
+                                        <span class="badge bg-info">Preparing</span>
+                                    }
+                                    else if (item.OrderStatus == "Out For Delivery")
+                                    {
+                                        <span class="badge bg-primary">
+                                            🚚 Out For Delivery
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">
+                                            ✅ Delivered
+                                        </span>
+                                    }
+                                <td>
+
+                                        @if (item.Paymentstatus == "Paid")
+                                        {
+                                        <span class="badge bg-success">
+
+                                            Paid
+
+                                        </span>
+                                        }
+                                        else
+                                        {
+                                        <span class="badge bg-warning text-dark">
+
+                                            Pending
+
+                                        </span>
+                                        }
+
+                                </td>
+                                </td>
+
+                                <td>
+                                    @item.OrderDate.ToString("dd MMM yyyy")
+                                </td>
+
+                                <td>
+
+                                    <a href="/Admin/Orders/Details/@item.Id"
+                                   
+                                       class="btn btn-info btn-sm text-white">
+                                        👁 View
+                                    </a>
+
+                                    @if (item.OrderStatus == "Pending")
+                                    {
+                                        <a href="/Admin/Orders/Preparing/@item.Id"
+                                         
+                                           class="btn btn-warning btn-sm">
+                                            Preparing
+                                        </a>
+                                    }
+
+                                    @if (item.OrderStatus == "Preparing")
+                                    {
+                                        <a href="/Admin/Orders/OutForDelivery/@item.Id"
+                                          
+                                           class="btn btn-primary btn-sm">
+                                            🚚 Out For Delivery
+                                        </a>
+                                    }
+
+                                    @if (item.OrderStatus == "Out For Delivery")
+                                    {
+                                        <a href="/Admin/Orders/Completed/@item.Id"
+
+                                           class="btn btn-success btn-sm">
+                                            ✅ Delivered
+                                        </a>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
