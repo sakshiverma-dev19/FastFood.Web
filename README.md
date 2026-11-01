@@ -28,6 +28,14 @@ FastFood.Web is an online food ordering web application developed using ASP.NET 
 - SQL Server
 - Entity Framework Core
 
+  ## Database Setup
+
+1. Open SQL Server Management Studio.
+2. Open the Database folder.
+3. Execute FastFoodDb.sql.
+4. Update the connection string in appsettings.json.
+5. Run the application using Visual Studio 2022.
+
 ## Project Structure
 - Controllers
 - Models
